@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-mensaje
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ms-mensaje
+  template:
+    metadata:
+      labels:
+        app: ms-mensaje
+    spec:
+      containers:
+      - name: ms-mensaje
+        image: matiassalinas/microservicio-java:latest
+        ports:
+        - containerPort: 8080

@@ -35,6 +35,7 @@ jobs:
             ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 85
+          fail_below_threshold: true
 
       - name: Upload Jacoco artifact report
         uses: actions/upload-artifact@v2

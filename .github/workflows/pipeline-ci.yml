@@ -77,7 +77,7 @@ jobs:
       - name: Run All JMeter Tests In tests Folder
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          testFilePath: src/test/
+          testFilePath: ../../src/test/
           outputReportsFolder: reports/
           args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
 

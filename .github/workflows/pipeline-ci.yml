@@ -20,8 +20,8 @@ jobs:
       - name: Build
         run: mvn package
 
-      - name: Unit Test
-        run: mvn clean test
+      - name: Cobertura
+        run: mvn verify
 
       - name: Report Jacoco
         run: mvn jacoco:report

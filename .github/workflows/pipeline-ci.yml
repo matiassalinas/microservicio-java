@@ -74,13 +74,6 @@ jobs:
         run: | 
           docker push matiassalinas/microservicio-java:latest
 
-      - name: Run All JMeter Tests In tests Folder
-        uses: rbhadti94/apache-jmeter-action@v0.5.0
-        with:
-          testFilePath: ../../src/test/
-          outputReportsFolder: reports/
-          args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
-
   
   deploy:
     needs: build
@@ -94,3 +87,16 @@ jobs:
       - name: Despliegue
         run: |
           kubectl apply -f deploy.yaml
+
+      - name: Run All JMeter Tests In tests Folder
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: ../../src/test/
+          outputReportsFolder: reports/
+          args: "--loglevel INFO -JMyProperty=Value --jmeterlogconf=log.conf"
+
+      - name: Run Postman
+        uses: matt-ball/newman-action@master
+        with:
+          collection: postman_collection.json
+          environment: postman_environment.json

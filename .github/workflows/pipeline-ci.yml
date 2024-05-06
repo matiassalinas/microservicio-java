@@ -19,3 +19,15 @@ jobs:
 
       - name: Build
         run: mvn package
+
+      - name: Unit Test
+        run: mvn clean test
+
+      - name: Report Jacoco
+        run: mvn jacoco:report
+
+      - name: Upload Jacoco artifact report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/index.html 
